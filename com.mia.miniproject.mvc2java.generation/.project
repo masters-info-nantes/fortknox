@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>com.mia.banque.generation</name>
+	<name>com.mia.miniproject.mvc2java.generation</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -35,7 +35,7 @@
 		<link>
 			<name>miaStudio/virtualStore</name>
 			<type>2</type>
-			<locationURI>miaStudioArtifactStore://K/com.mia.banque.generation</locationURI>
+			<locationURI>miaStudioArtifactStore://K/com.mia.miniproject.mvc2java.generation</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

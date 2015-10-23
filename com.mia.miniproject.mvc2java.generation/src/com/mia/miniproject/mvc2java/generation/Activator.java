@@ -1,4 +1,4 @@
-package com.mia.banque.generation;
+package com.mia.miniproject.mvc2java.generation;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
@@ -7,7 +7,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "com.mia.banque.generation"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "com.mia.miniproject.mvc2java.generation"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
