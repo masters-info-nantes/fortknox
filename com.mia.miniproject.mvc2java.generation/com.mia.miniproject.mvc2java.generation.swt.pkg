@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PACKAGE SYSTEM "package.dtd">
-<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.swt" METAMODEL="MVC" NUMBER="0"
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.swt" METAMODEL="MVC" NUMBER="4"
 >
 	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
+	<SCENARIO NAME="generationInterfaces" VISIBILITY="public" META_OBJECT="Model" CATEGORY="default">
+		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="Model"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.swt" META_OBJECT="Model" CATEGORY="default" NAME="interfacesModel" PARAM_COUNT="0"/>
+	</SCENARIO>
+	<SCRIPT NAME="interfacesModel" META_OBJECT="Model" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="private">
+		<TEXT><![CDATA[
+package com.mia.banque.model;
+
+public interface I[[name]] {
+
+[[modelInterfaceMethods]]
+}
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="interfacesModel$Filename" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+com/mia/banque/model/I[[name]].java
+]]></TEXT>
+	</SCRIPT>
+	<TEXT_MACRO NAME="modelInterfaceMethods" META_OBJECT="Model" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getProperties(), "getterAndSetter");
+]]></TEXT>
+	</TEXT_MACRO>
+	<SCRIPT NAME="getterAndSetter" META_OBJECT="ModelProperty" CATEGORY="default">
+		<TEXT><![CDATA[
+public String get[[name]]();
+public void set[[name]](String newValue);
+
+]]></TEXT>
+	</SCRIPT>
 </PACKAGE>
