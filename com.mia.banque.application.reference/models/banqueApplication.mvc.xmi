@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:UIApplication
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:mvc="http://mvc/1.0">
+  <pages name="BanqueView"
+      description="Vue Banque"
+      model="//@models.0">
+    <actions
+        name="afficherClient"
+        nextPage="//@pages.1"/>
+    <actions
+        name="quitter"/>
+  </pages>
+  <pages name="ClientView"
+      description="Vue Client"
+      model="//@models.0/@ownedElements.0">
+    <actions
+        name="afficherCompte"
+        nextPage="//@pages.2"/>
+    <actions
+        name="quitter"/>
+  </pages>
+  <pages name="CompteView"
+      description="Vue Compte"
+      model="//@models.0/@ownedElements.0/@ownedElements.0">
+    <actions
+        name="afficherOperation"
+        nextPage="//@pages.3"/>
+    <actions
+        name="quitter"/>
+  </pages>
+  <pages name="OperationView"
+      description="Vue Operation"
+      model="//@models.0/@ownedElements.0/@ownedElements.0/@ownedElements.0">
+    <actions
+        name="quitter"/>
+  </pages>
+  <models name="Banque">
+    <ownedElements
+        name="Client">
+      <properties
+          name="Nom"/>
+      <properties
+          name="Prenom"/>
+      <properties
+          name="Adresse"/>
+      <ownedElements
+          name="Compte">
+        <properties
+            name="Numero"/>
+        <ownedElements
+            name="Operation">
+          <properties
+              name="Numero"/>
+          <properties
+              name="Montant"/>
+        </ownedElements>
+      </ownedElements>
+    </ownedElements>
+  </models>
+</mvc:UIApplication>
