@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PACKAGE SYSTEM "package.dtd">
-<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.swt" METAMODEL="MVC" NUMBER="4"
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.swt" METAMODEL="MVC" NUMBER="8"
 >
 	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
 	<SCENARIO NAME="generationInterfaces" VISIBILITY="public" META_OBJECT="Model" CATEGORY="default">
 		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="Model"/>
 		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.swt" META_OBJECT="Model" CATEGORY="default" NAME="interfacesModel" PARAM_COUNT="0"/>
 	</SCENARIO>
+	<SCRIPT NAME="getterAndSetterList" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+	public List<I[[name@¤] get[[name]]s();
+	
+	public void set[[name]]s(List<I[[name@¤] newValue);
+	
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="importList" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+import java.util.List;
+
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="importList$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return !current.getOwnedElements().isEmpty();
+]]></TEXT>
+	</MACRO_CONDITION>
 	<SCRIPT NAME="interfacesModel" META_OBJECT="Model" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="private">
 		<TEXT><![CDATA[
 package com.mia.banque.model;
 
+[[importList]]
+
 public interface I[[name]] {
 
 [[modelInterfaceMethods]]
+
+[[modelInterfaceListe]]
 }
 ]]></TEXT>
 		<PROPERTY NAME="Filename"/>
@@ -23,6 +47,11 @@ public interface I[[name]] {
 com/mia/banque/model/I[[name]].java
 ]]></TEXT>
 	</SCRIPT>
+	<TEXT_MACRO NAME="modelInterfaceListe" META_OBJECT="Model" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getOwnedElements(), "getterAndSetterList");
+]]></TEXT>
+	</TEXT_MACRO>
 	<TEXT_MACRO NAME="modelInterfaceMethods" META_OBJECT="Model" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
 		<TEXT><![CDATA[
 return manager.apply(current.getProperties(), "getterAndSetter");
