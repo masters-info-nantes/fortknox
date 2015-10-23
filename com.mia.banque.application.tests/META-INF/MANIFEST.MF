@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests
+Bundle-SymbolicName: com.mia.banque.application.tests
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: MIA
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: com.mia.banque.application.reference;bundle-version="1.0.0"

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PACKAGE SYSTEM "package.dtd">
+<PACKAGE NAME="com.mia.banque.generation.swt" METAMODEL="MVC" NUMBER="0"
+>
+	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
+	<SCENARIO NAME="shellGeneration" VISIBILITY="public" META_OBJECT="View" CATEGORY="default">
+		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="View"/>
+	</SCENARIO>
+</PACKAGE>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.mia.banque.application.reference
+Bundle-SymbolicName: com.mia.banque.application.reference
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Mia-Software
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.swt;bundle-version="3.102.0"
+Export-Package: com.mia.banque.model,
+ com.mia.banque.model.impl,
+ com.mia.banque.ui.controler,
+ com.mia.banque.ui.controler.swt,
+ com.mia.banque.ui.view,
+ com.mia.banque.ui.view.swt
