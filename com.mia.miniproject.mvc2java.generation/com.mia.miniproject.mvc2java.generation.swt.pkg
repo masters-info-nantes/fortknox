@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PACKAGE SYSTEM "package.dtd">
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.swt" METAMODEL="MVC" NUMBER="0"
+>
+	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
+</PACKAGE>
