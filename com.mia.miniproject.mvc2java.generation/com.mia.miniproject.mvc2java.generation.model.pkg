@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PACKAGE SYSTEM "package.dtd">
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.model" METAMODEL="MVC" NUMBER="23"
+>
+	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
+	<SCENARIO NAME="ModelGeneration" VISIBILITY="public" META_OBJECT="Model" CATEGORY="default">
+		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="Model"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.model" META_OBJECT="Model" CATEGORY="default" NAME="Interfaces" PARAM_COUNT="0"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.model" META_OBJECT="Model" CATEGORY="default" NAME="Implementations" PARAM_COUNT="0"/>
+	</SCENARIO>
+	<TEXT_MACRO NAME="AttributsDecl" META_OBJECT="Model" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getProperties(), "AttributDecl");
+]]></TEXT>
+	</TEXT_MACRO>
+	<TEXT_MACRO NAME="AttributsGettersSettersDecl" META_OBJECT="Model" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getProperties(), "GetterSetterDecl");
+]]></TEXT>
+	</TEXT_MACRO>
+	<TEXT_MACRO NAME="AttributsGettersSettersDef" META_OBJECT="Model" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getProperties(), "GetterSetterDef");
+]]></TEXT>
+	</TEXT_MACRO>
+	<SCRIPT NAME="Implementations" META_OBJECT="Model" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="private">
+		<TEXT><![CDATA[
+package com.mia.banque.model.impl;
+
+[[ImportListClass]]
+[[ImportArrayList]]
+
+public class [[name]] implements com.mia.banque.model.I[[name]] {
+
+	// Class attributes
+[[AttributsDecl]]
+[[ListeAttributsDecl]]
+
+	// Getters and setters
+[[AttributsGettersSettersDecl]]
+[[ListeAttributsGettersSettersDecl]]
+}
+
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="Implementations$Filename" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+com/mia/banque/model/impl/[[name]].java
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="ImportArrayList" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+import java.util.ArrayList;
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="ImportArrayList$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return !current.getOwnedElements().isEmpty();
+]]></TEXT>
+	</MACRO_CONDITION>
+	<SCRIPT NAME="ImportListClass" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+import java.util.List;
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="ImportListClass$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return !current.getOwnedElements().isEmpty();
+]]></TEXT>
+	</MACRO_CONDITION>
+	<SCRIPT NAME="Interfaces" META_OBJECT="Model" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="private">
+		<TEXT><![CDATA[
+package com.mia.banque.model;
+
+[[ImportListClass]]
+
+public interface I[[name]] {
+[[AttributsGettersSettersDef]]
+[[ListeAttributsGettersSettersDef]]
+}
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="Interfaces$Filename" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+com/mia/banque/model/I[[name]].java
+]]></TEXT>
+	</SCRIPT>
+	<TEXT_MACRO NAME="ListeAttributsDecl" META_OBJECT="Model" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getOwnedElements(), "ListeDecl");
+]]></TEXT>
+	</TEXT_MACRO>
+	<TEXT_MACRO NAME="ListeAttributsGettersSettersDecl" META_OBJECT="Model" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getOwnedElements(), "ListeGetterSetterDecl");
+]]></TEXT>
+	</TEXT_MACRO>
+	<TEXT_MACRO NAME="ListeAttributsGettersSettersDef" META_OBJECT="Model" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getOwnedElements(), "ListeGetterSetterDef");
+]]></TEXT>
+	</TEXT_MACRO>
+	<SCRIPT NAME="ListeDecl" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+	private List<com.mia.banque.model.I[[name@¤] list[[name]]s;
+
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="ListeDecl$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return !current.getOwnedElements().isEmpty();
+]]></TEXT>
+	</MACRO_CONDITION>
+	<SCRIPT NAME="ListeGetterSetterDecl" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+	public List<com.mia.banque.model.I[[name@¤] getList[[name]]s() {
+		if (this.list[[name]]s == null) {
+			this.list[[name]]s= new ArrayList<com.mia.banque.model.I[[name@¤]();
+		}
+		return this.list[[name]]s;
+	}
+		
+	public void setList[[name]]s(List<com.mia.banque.model.I[[name@¤] newValue) {
+		this.list[[name]]s = newValue;
+	}
+
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="ListeGetterSetterDecl$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return !current.getOwnedElements().isEmpty();
+]]></TEXT>
+	</MACRO_CONDITION>
+	<SCRIPT NAME="ListeGetterSetterDef" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+	public List<com.mia.banque.model.I[[name@¤] getList[[name]]s();
+	public void setList[[name]]s(List<com.mia.banque.model.I[[name@¤] newValue);
+
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="ListeGetterSetterDef$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return !current.getOwnedElements().isEmpty();
+]]></TEXT>
+	</MACRO_CONDITION>
+	<SCRIPT NAME="AttributDecl" META_OBJECT="ModelProperty" CATEGORY="default">
+		<TEXT><![CDATA[
+	private String [[name]];
+
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="GetterSetterDecl" META_OBJECT="ModelProperty" CATEGORY="default">
+		<TEXT><![CDATA[
+	public String get[[name]]() {
+		return this.[[name]];
+	}
+	
+	public void set[[name]](String newValue) {
+		this.[[name]] = newValue;
+	}
+
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="GetterSetterDef" META_OBJECT="ModelProperty" CATEGORY="default">
+		<TEXT><![CDATA[
+	public String get[[name]]();
+	public void set[[name]](String newValue);
+
+]]></TEXT>
+	</SCRIPT>
+</PACKAGE>

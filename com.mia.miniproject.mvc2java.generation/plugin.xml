@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.4"?><plugin>
+   
    <extension point="com.mia.studio.generation.core.generation_package">
-      <package file="com.mia.miniproject.mvc2java.generation.swt.pkg"/>
+      <package file="com.mia.miniproject.mvc2java.generation.model.pkg"/>
    </extension>
 </plugin>
