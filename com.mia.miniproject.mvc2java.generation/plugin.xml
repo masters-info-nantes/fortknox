@@ -4,4 +4,10 @@
    <extension point="com.mia.studio.generation.core.generation_package">
       <package file="com.mia.miniproject.mvc2java.generation.model.pkg"/>
    </extension>
+   <extension point="com.mia.studio.generation.core.generation_package">
+      <package file="com.mia.miniproject.mvc2java.generation.ui.controler.pkg"/>
+   </extension>
+   <extension point="com.mia.studio.generation.core.generation_package">
+      <package file="com.mia.miniproject.mvc2java.generation.ui.view.pkg"/>
+   </extension>
 </plugin>
