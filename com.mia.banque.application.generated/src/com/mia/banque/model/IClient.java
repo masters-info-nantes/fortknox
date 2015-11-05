@@ -10,7 +10,6 @@ public interface IClient {
 	public String getAdresse();
 	public void setAdresse(String newValue);
 
-	public List<com.mia.banque.model.ICompte> getListComptes();
-	public void setListComptes(List<com.mia.banque.model.ICompte> newValue);
+public void setListComptes(List<com.mia.banque.model.ICompte> newValue);
 
 }

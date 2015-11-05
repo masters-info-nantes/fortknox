@@ -139,8 +139,7 @@ return !current.getOwnedElements().isEmpty();
 	</MACRO_CONDITION>
 	<SCRIPT NAME="ListeGetterSetterDef" META_OBJECT="Model" CATEGORY="default">
 		<TEXT><![CDATA[
-	public List<com.mia.banque.model.I[[name@¤] getList[[name]]s();
-	public void setList[[name]]s(List<com.mia.banque.model.I[[name@¤] newValue);
+public void setList[[name]]s(List<com.mia.banque.model.I[[name@¤] newValue);
 
 ]]></TEXT>
 		<PROPERTY NAME="Precondition"/>
