@@ -5,6 +5,6 @@ public interface IOperationControler {
 	public void initView();
 
 	public void quitter();
-	
+
 
 }

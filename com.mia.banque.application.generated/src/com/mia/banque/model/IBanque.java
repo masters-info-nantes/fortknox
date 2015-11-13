@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface IBanque {
 
-public void setListClients(List<com.mia.banque.model.IClient> newValue);
+	public List<IClient> getListClients();
+	public void setListClients(List<com.mia.banque.model.IClient> newValue);
 
 }

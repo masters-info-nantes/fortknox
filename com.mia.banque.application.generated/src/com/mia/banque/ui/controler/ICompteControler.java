@@ -5,7 +5,7 @@ public interface ICompteControler {
 	public void initView();
 
 	public void afficherOperation();
-		public void quitter();
-	
+	public void quitter();
+
 
 }

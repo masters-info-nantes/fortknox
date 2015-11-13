@@ -5,7 +5,7 @@ public interface IClientControler {
 	public void initView();
 
 	public void afficherCompte();
-		public void quitter();
-	
+	public void quitter();
+
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PACKAGE SYSTEM "package.dtd">
-<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.view" METAMODEL="MVC" NUMBER="15"
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.view" METAMODEL="MVC" NUMBER="23"
 >
 	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
 	<SCENARIO NAME="ViewGeneration" VISIBILITY="public" META_OBJECT="View" CATEGORY="default">
@@ -14,9 +14,32 @@
 
 ]]></TEXT>
 	</SCRIPT>
+	<SCRIPT NAME="ActionDef" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+	public void [[name]]() {
+		this.controler.[[name]]();
+	}
+
+]]></TEXT>
+	</SCRIPT>
 	<SCRIPT NAME="ButtonAttribute" META_OBJECT="Action" CATEGORY="default">
 		<TEXT><![CDATA[
 	private Button btn[[name]];
+
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="UiButton" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+		btn[[name]] = new Button(grpButtons, SWT.NONE);
+		btn[[name]].setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 1, 1));
+		btn[[name]].setText("[[name]]");
+		btn[[name]].addSelectionListener(new SelectionAdapter(){
+		        public void widgetSelected(SelectionEvent event)
+		        {
+		        		 [[name]]();
+		        }
+	    });
+
 
 ]]></TEXT>
 	</SCRIPT>
@@ -36,6 +59,35 @@
 import com.mia.banque.ui.controler.I[[name]]Controler;
 import com.mia.banque.ui.view.I[[name]]View;
 import com.mia.banque.model.I[[name]];
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="UiListAttribute" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+		// Liste
+		Group grp[[name]] = new Group(this, SWT.NONE);
+		grp[[name]].setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+		grp[[name]].setText("Liste des [[name]]");
+		grp[[name]].setLayout(new GridLayout());
+		
+		this.[[name]]List = new List(grp[[name]], SWT.BORDER | SWT.V_SCROLL | SWT.SINGLE);
+		this.[[name]]List.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		
+		for (final com.mia.banque.model.I[[name]] elt : this.model.getList[[name]]s()) {
+			this.[[name]]List.add(elt.toString());
+		}
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="UiAttribute" META_OBJECT="ModelProperty" CATEGORY="default">
+		<TEXT><![CDATA[
+		Label lbl[[name]] = new Label(this, SWT.NONE);
+		lbl[[name]].setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		lbl[[name]].setText("[[name]]");
+		
+		Text [[name]]Field = new Text(this, SWT.BORDER);
+		[[name]]Field.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		[[name]]Field.setText(this.model.get[[name]]());
+
+
 ]]></TEXT>
 	</SCRIPT>
 	<TEXT_MACRO NAME="AttributeList" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
@@ -67,6 +119,41 @@ public class [[name]] extends Shell implements I[[name]] {
 [[AttributesButtons]]
 
 [[AttributeList]]
+
+	/**
+	 * Create the shell.
+	 * @param display
+	 */
+	public [[name]](Display display, com.mia.banque.model.I[[model.name]] model, I[[name]]Controler controler) {
+		super(display, SWT.SHELL_TRIM);
+		this.model = model;
+		this.controler = controler;
+		
+		createContents();
+	}
+	
+[[MethodsActionsDef]]
+
+	private void createContents(){
+		setText("Vue [[model.name]]");
+		setSize(458, 308);
+		setLayout(new GridLayout(2, false));
+		
+[[UiAttributes]]
+
+[[UiListAttributes]]
+
+		Group grpButtons = new Group(this, SWT.NONE);
+		grpButtons.setLayout(new GridLayout(2, false));
+		grpButtons.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+		
+[[UiButtons]]
+	}
+	
+	@Override
+	protected void checkSubclass() {
+		// Disable the check that prevents subclassing of SWT components
+	}	
 }
 ]]></TEXT>
 		<PROPERTY NAME="Filename"/>
@@ -101,6 +188,11 @@ com/mia/banque/ui/view/I[[name]].java
 return manager.apply(current.getActions(), "ActionDecl");
 ]]></TEXT>
 	</TEXT_MACRO>
+	<TEXT_MACRO NAME="MethodsActionsDef" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getActions(), "ActionDef");
+]]></TEXT>
+	</TEXT_MACRO>
 	<SCRIPT NAME="SwtImports" META_OBJECT="View" CATEGORY="default">
 		<TEXT><![CDATA[
 import org.eclipse.swt.SWT;
@@ -117,4 +209,19 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Group;
 ]]></TEXT>
 	</SCRIPT>
+	<TEXT_MACRO NAME="UiAttributes" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getModel().getProperties(), "UiAttribute");
+]]></TEXT>
+	</TEXT_MACRO>
+	<TEXT_MACRO NAME="UiButtons" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getActions(), "UiButton");
+]]></TEXT>
+	</TEXT_MACRO>
+	<TEXT_MACRO NAME="UiListAttributes" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getModel().getOwnedElements(), "UiListAttribute");
+]]></TEXT>
+	</TEXT_MACRO>
 </PACKAGE>

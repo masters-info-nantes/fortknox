@@ -5,7 +5,7 @@ public interface IBanqueControler {
 	public void initView();
 
 	public void afficherClient();
-		public void quitter();
-	
+	public void quitter();
+
 
 }
