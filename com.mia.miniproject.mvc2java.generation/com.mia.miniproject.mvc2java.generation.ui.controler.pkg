@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PACKAGE SYSTEM "package.dtd">
-<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.controler" METAMODEL="MVC" NUMBER="2"
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.controler" METAMODEL="MVC" NUMBER="10"
 >
 	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
 	<SCENARIO NAME="ControlerGeneration" VISIBILITY="public" META_OBJECT="View" CATEGORY="default">
 		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="View"/>
 		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.ui.controler" META_OBJECT="View" CATEGORY="default" NAME="InterfaceControler" PARAM_COUNT="0"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.ui.controler" META_OBJECT="View" CATEGORY="default" NAME="ImplementationControler" PARAM_COUNT="0"/>
 	</SCENARIO>
+	<SCRIPT NAME="MvcAttributesControler" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+	private [[name]]View view;
+	private I[[name]] model;
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="MvcAttributesControler$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return !current.getOwnedElements().isEmpty();
+]]></TEXT>
+	</MACRO_CONDITION>
+	<SCRIPT NAME="MvcImportsControler" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+import com.mia.banque.ui.controler.I[[name]]Controler;
+import com.mia.banque.ui.view.I[[name]]View;
+import com.mia.banque.ui.view.swt.[[name]]View;
+import com.mia.banque.model.I[[name]];
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="MvcImportsControler$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return !current.getOwnedElements().isEmpty();
+]]></TEXT>
+	</MACRO_CONDITION>
+	<TEXT_MACRO NAME="AttributesMvcControler" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.getString(current.getModel(), "MvcAttributesControler");
+]]></TEXT>
+	</TEXT_MACRO>
+	<SCRIPT NAME="ImplementationControler" META_OBJECT="View" CATEGORY="default" FILE_ENCODING="windows-1252" VISIBILITY="private">
+		<TEXT><![CDATA[
+package com.mia.banque.ui.controler.swt;
+
+[[SwtImports]]
+
+[[ImportsMvcControler]]
+
+public class [[model.name]]Controler extends Shell implements I[[model.name]]Controler {
+
+[[AttributesMvcControler]]
+
+}
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="ImplementationControler$Filename" META_OBJECT="View" CATEGORY="default">
+		<TEXT><![CDATA[
+com/mia/banque/ui/controler/swt/[[model.name]]Controler.java
+]]></TEXT>
+	</SCRIPT>
+	<TEXT_MACRO NAME="ImportsMvcControler" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.getString(current.getModel(), "MvcImportsControler");
+]]></TEXT>
+	</TEXT_MACRO>
 	<SCRIPT NAME="InterfaceControler" META_OBJECT="View" CATEGORY="default" FILE_ENCODING="windows-1252" VISIBILITY="private">
 		<TEXT><![CDATA[
 package com.mia.banque.ui.controler;
