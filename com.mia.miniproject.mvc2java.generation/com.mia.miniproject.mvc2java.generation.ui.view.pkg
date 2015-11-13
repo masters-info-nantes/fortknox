@@ -1,19 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PACKAGE SYSTEM "package.dtd">
-<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.view" METAMODEL="MVC" NUMBER="4"
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.view" METAMODEL="MVC" NUMBER="15"
 >
 	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
 	<SCENARIO NAME="ViewGeneration" VISIBILITY="public" META_OBJECT="View" CATEGORY="default">
 		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="View"/>
-		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.ui.view" META_OBJECT="View" CATEGORY="default" NAME="InterfaceView" PARAM_COUNT="0"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.ui.view" META_OBJECT="View" CATEGORY="default" NAME="Interfaces" PARAM_COUNT="0"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.ui.view" META_OBJECT="View" CATEGORY="default" NAME="Implementations" PARAM_COUNT="0"/>
 	</SCENARIO>
 	<SCRIPT NAME="ActionDecl" META_OBJECT="Action" CATEGORY="default">
 		<TEXT><![CDATA[
 	public void [[name]]();
-	
+
 ]]></TEXT>
 	</SCRIPT>
-	<SCRIPT NAME="InterfaceView" META_OBJECT="View" CATEGORY="default" FILE_ENCODING="windows-1252" VISIBILITY="private">
+	<SCRIPT NAME="ButtonAttribute" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+	private Button btn[[name]];
+
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="ListAttribute" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+	public List [[name]]List;
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="MvcAttributes" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+	private I[[name]]Controler controler;
+	private I[[name]] model;
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="MvcImports" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+import com.mia.banque.ui.controler.I[[name]]Controler;
+import com.mia.banque.ui.view.I[[name]]View;
+import com.mia.banque.model.I[[name]];
+]]></TEXT>
+	</SCRIPT>
+	<TEXT_MACRO NAME="AttributeList" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getModel().getOwnedElements(), "ListAttribute");
+]]></TEXT>
+	</TEXT_MACRO>
+	<TEXT_MACRO NAME="AttributesButtons" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getActions(), "ButtonAttribute");
+]]></TEXT>
+	</TEXT_MACRO>
+	<TEXT_MACRO NAME="AttributesMvc" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.getString(current.getModel(), "MvcAttributes");
+]]></TEXT>
+	</TEXT_MACRO>
+	<SCRIPT NAME="Implementations" META_OBJECT="View" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="private">
+		<TEXT><![CDATA[
+package com.mia.banque.ui.view.swt;
+
+[[SwtImports]]
+
+[[ImportsMvc]]
+
+public class [[name]] extends Shell implements I[[name]] {
+[[AttributesMvc]]
+
+[[AttributesButtons]]
+
+[[AttributeList]]
+}
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="Implementations$Filename" META_OBJECT="View" CATEGORY="default">
+		<TEXT><![CDATA[
+com/mia/banque/ui/view/swt/[[name]].java
+]]></TEXT>
+	</SCRIPT>
+	<TEXT_MACRO NAME="ImportsMvc" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.getString(current.getModel(), "MvcImports");
+]]></TEXT>
+	</TEXT_MACRO>
+	<SCRIPT NAME="Interfaces" META_OBJECT="View" CATEGORY="default" FILE_ENCODING="windows-1252" VISIBILITY="private">
 		<TEXT><![CDATA[
 package com.mia.banque.ui.view;
 
@@ -23,7 +91,7 @@ public interface I[[name]] {
 ]]></TEXT>
 		<PROPERTY NAME="Filename"/>
 	</SCRIPT>
-	<SCRIPT NAME="InterfaceView$Filename" META_OBJECT="View" CATEGORY="default">
+	<SCRIPT NAME="Interfaces$Filename" META_OBJECT="View" CATEGORY="default">
 		<TEXT><![CDATA[
 com/mia/banque/ui/view/I[[name]].java
 ]]></TEXT>
@@ -33,4 +101,20 @@ com/mia/banque/ui/view/I[[name]].java
 return manager.apply(current.getActions(), "ActionDecl");
 ]]></TEXT>
 	</TEXT_MACRO>
+	<SCRIPT NAME="SwtImports" META_OBJECT="View" CATEGORY="default">
+		<TEXT><![CDATA[
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Group;
+]]></TEXT>
+	</SCRIPT>
 </PACKAGE>
