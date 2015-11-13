@@ -49,7 +49,8 @@ public class BanqueControler implements IBanqueControler {
 		if (this.view.ClientList.getSelection().length >0) {
 			String clientSelection = this.view.ClientList.getSelection()[0];
 			for (final com.mia.banque.model.IClient aClient : this.model.getClients()) {
-				if (aClient.toString().equals(clientSelection)) { // TODO gerer un champ id plutôt que utiliser toString()
+				if (aClient.toString().equals(clientSelection)) {
+					// TODO gerer un champ id plutôt que utiliser toString()
 					ClientControler clientControler = new ClientControler(aClient);
 					clientControler.initView();
 				}

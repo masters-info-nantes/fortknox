@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PACKAGE SYSTEM "package.dtd">
-<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.controler" METAMODEL="MVC" NUMBER="10"
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.controler" METAMODEL="MVC" NUMBER="14"
 >
 	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
 	<SCENARIO NAME="ControlerGeneration" VISIBILITY="public" META_OBJECT="View" CATEGORY="default">
@@ -8,6 +8,28 @@
 		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.ui.controler" META_OBJECT="View" CATEGORY="default" NAME="InterfaceControler" PARAM_COUNT="0"/>
 		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.ui.controler" META_OBJECT="View" CATEGORY="default" NAME="ImplementationControler" PARAM_COUNT="0"/>
 	</SCENARIO>
+	<SCRIPT NAME="ActionDefControler" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+	public void [[name]]() {
+		[[BeginTag]]
+		
+		[[EndTag]]
+	}
+
+]]></TEXT>
+		<PROPERTY NAME="BeginTag"/>
+		<PROPERTY NAME="EndTag"/>
+	</SCRIPT>
+	<SCRIPT NAME="ActionDefControler$BeginTag" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+// Start of user code for [[name]]
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="ActionDefControler$EndTag" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+// End of user code for [[name]]
+]]></TEXT>
+	</SCRIPT>
 	<SCRIPT NAME="MvcAttributesControler" META_OBJECT="Model" CATEGORY="default">
 		<TEXT><![CDATA[
 	private [[name]]View view;
@@ -51,6 +73,27 @@ public class [[model.name]]Controler extends Shell implements I[[model.name]]Con
 
 [[AttributesMvcControler]]
 
+public [[model.name]]Controler(com.mia.banque.model.I[[model.name]] model) {
+this.model = model;
+}
+
+	public void initView() {	
+		Display display = Display.getDefault();
+		
+		this.view = new [[name]](display, this.model, this);
+		this.view.open();
+		this.view.layout();
+		
+		while (!this.view.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+			
+		}
+	}
+
+[[MethodsActionsDefControler]]
+
 }
 ]]></TEXT>
 		<PROPERTY NAME="Filename"/>
@@ -84,4 +127,9 @@ public interface I[[model.name]]Controler {
 com/mia/banque/ui/controler/I[[model.name]]Controler.java
 ]]></TEXT>
 	</SCRIPT>
+	<TEXT_MACRO NAME="MethodsActionsDefControler" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getActions(), "ActionDefControler");
+]]></TEXT>
+	</TEXT_MACRO>
 </PACKAGE>

@@ -48,7 +48,7 @@ public class CompteControler implements ICompteControler {
 // Start of user code for afficherOperation
 		if (this.view.OperationList.getSelection().length >0) {
 			String compteSelection = this.view.OperationList.getSelection()[0];
-			for (final com.mia.banque.model.IOperation aOp : this.model.getOperations()) {
+			for (final com.mia.banque.model.IOperation aOp : this.model.getListOperations()) {
 				if (aOp.toString().equals(compteSelection)) { // TODO gerer un champ id plutôt que utiliser toString()
 					OperationControler opeControler = new OperationControler(aOp);
 					opeControler.initView();

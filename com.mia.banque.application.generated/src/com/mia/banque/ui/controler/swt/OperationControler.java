@@ -19,4 +19,31 @@ public class OperationControler extends Shell implements IOperationControler {
 
 
 
+public OperationControler(com.mia.banque.model.IOperation model) {
+this.model = model;
+}
+
+	public void initView() {	
+		Display display = Display.getDefault();
+		
+		this.view = new OperationView(display, this.model, this);
+		this.view.open();
+		this.view.layout();
+		
+		while (!this.view.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+			
+		}
+	}
+
+	public void quitter() {
+		// Start of user code for quitter
+		//On veut fermer toutes les fenêtres ouvertes
+		Display.getCurrent().dispose();		
+		// End of user code for quitter
+	}
+
+
 }
