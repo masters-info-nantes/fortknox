@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PACKAGE SYSTEM "package.dtd">
-<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.view" METAMODEL="MVC" NUMBER="2"
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.view" METAMODEL="MVC" NUMBER="4"
 >
 	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
-	<SCENARIO NAME="ModelGenerationView" VISIBILITY="public" META_OBJECT="Model" CATEGORY="default">
-		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="Model"/>
-		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.ui.view" META_OBJECT="Model" CATEGORY="default" NAME="InterfaceView" PARAM_COUNT="0"/>
+	<SCENARIO NAME="ViewGeneration" VISIBILITY="public" META_OBJECT="View" CATEGORY="default">
+		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="View"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="com.mia.miniproject.mvc2java.generation.ui.view" META_OBJECT="View" CATEGORY="default" NAME="InterfaceView" PARAM_COUNT="0"/>
 	</SCENARIO>
-	<SCRIPT NAME="InterfaceView" META_OBJECT="Model" CATEGORY="default" FILE_ENCODING="windows-1252" VISIBILITY="private">
+	<SCRIPT NAME="ActionDecl" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+	public void [[name]]();
+	
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="InterfaceView" META_OBJECT="View" CATEGORY="default" FILE_ENCODING="windows-1252" VISIBILITY="private">
 		<TEXT><![CDATA[
 package com.mia.banque.ui.view;
 
-public interface I[[name]]View {
-
-public void quitter();
-
+public interface I[[name]] {
+[[MethodsActionsDecl]]
 }
 ]]></TEXT>
 		<PROPERTY NAME="Filename"/>
 	</SCRIPT>
-	<SCRIPT NAME="InterfaceView$Filename" META_OBJECT="Model" CATEGORY="default">
+	<SCRIPT NAME="InterfaceView$Filename" META_OBJECT="View" CATEGORY="default">
 		<TEXT><![CDATA[
-com/mia/banque/ui/view/I[[name]]View.java
+com/mia/banque/ui/view/I[[name]].java
 ]]></TEXT>
 	</SCRIPT>
+	<TEXT_MACRO NAME="MethodsActionsDecl" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
+		<TEXT><![CDATA[
+return manager.apply(current.getActions(), "ActionDecl");
+]]></TEXT>
+	</TEXT_MACRO>
 </PACKAGE>

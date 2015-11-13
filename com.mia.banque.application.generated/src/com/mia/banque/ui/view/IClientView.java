@@ -1,7 +1,7 @@
 package com.mia.banque.ui.view;
 
 public interface IClientView {
-
-public void quitter();
-
+	public void afficherCompte();
+		public void quitter();
+	
 }
