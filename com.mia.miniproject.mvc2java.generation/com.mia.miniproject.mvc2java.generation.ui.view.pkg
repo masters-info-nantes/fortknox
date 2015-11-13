@@ -124,7 +124,7 @@ public class [[name]] extends Shell implements I[[name]] {
 	 * Create the shell.
 	 * @param display
 	 */
-	public [[name]](Display display, com.mia.banque.model.I[[model.name]] model, I[[name]]Controler controler) {
+	public [[name]](Display display, com.mia.banque.model.I[[model.name]] model, I[[model.name]]Controler controler) {
 		super(display, SWT.SHELL_TRIM);
 		this.model = model;
 		this.controler = controler;
