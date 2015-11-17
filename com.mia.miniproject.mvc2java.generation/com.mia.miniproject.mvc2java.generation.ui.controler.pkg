@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PACKAGE SYSTEM "package.dtd">
-<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.controler" METAMODEL="MVC" NUMBER="14"
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.ui.controler" METAMODEL="MVC" NUMBER="12"
 >
 	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
 	<SCENARIO NAME="ControlerGeneration" VISIBILITY="public" META_OBJECT="View" CATEGORY="default">
@@ -35,13 +35,7 @@
 	private [[name]]View view;
 	private I[[name]] model;
 ]]></TEXT>
-		<PROPERTY NAME="Precondition"/>
 	</SCRIPT>
-	<MACRO_CONDITION NAME="MvcAttributesControler$Precondition" META_OBJECT="Model" CATEGORY="default">
-		<TEXT><![CDATA[
-return !current.getOwnedElements().isEmpty();
-]]></TEXT>
-	</MACRO_CONDITION>
 	<SCRIPT NAME="MvcImportsControler" META_OBJECT="Model" CATEGORY="default">
 		<TEXT><![CDATA[
 import com.mia.banque.ui.controler.I[[name]]Controler;
@@ -49,13 +43,7 @@ import com.mia.banque.ui.view.I[[name]]View;
 import com.mia.banque.ui.view.swt.[[name]]View;
 import com.mia.banque.model.I[[name]];
 ]]></TEXT>
-		<PROPERTY NAME="Precondition"/>
 	</SCRIPT>
-	<MACRO_CONDITION NAME="MvcImportsControler$Precondition" META_OBJECT="Model" CATEGORY="default">
-		<TEXT><![CDATA[
-return !current.getOwnedElements().isEmpty();
-]]></TEXT>
-	</MACRO_CONDITION>
 	<TEXT_MACRO NAME="AttributesMvcControler" META_OBJECT="View" CATEGORY="default" RETURN_TYPE_KIND="primitive" RETURN_TYPE_NAME="String">
 		<TEXT><![CDATA[
 return manager.getString(current.getModel(), "MvcAttributesControler");
@@ -73,9 +61,9 @@ public class [[model.name]]Controler extends Shell implements I[[model.name]]Con
 
 [[AttributesMvcControler]]
 
-public [[model.name]]Controler(com.mia.banque.model.I[[model.name]] model) {
-this.model = model;
-}
+	public [[model.name]]Controler(com.mia.banque.model.I[[model.name]] model) {
+		this.model = model;
+	}
 
 	public void initView() {	
 		Display display = Display.getDefault();
