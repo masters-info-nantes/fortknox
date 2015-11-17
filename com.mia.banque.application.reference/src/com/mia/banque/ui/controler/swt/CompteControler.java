@@ -48,8 +48,8 @@ public class CompteControler implements ICompteControler {
 // Start of user code for afficherOperation
 		if (this.view.OperationList.getSelection().length >0) {
 			String compteSelection = this.view.OperationList.getSelection()[0];
-			for (final com.mia.banque.model.IOperation aOp : this.model.getListOperations()) {
-				if (aOp.toString().equals(compteSelection)) { // TODO gerer un champ id plutôt que utiliser toString()
+			for (final com.mia.banque.model.IOperation aOp : this.model.getOperations()) {
+				if (aOp.toString().equals(compteSelection)) { // TODO gerer un champ id plutï¿½t que utiliser toString()
 					OperationControler opeControler = new OperationControler(aOp);
 					opeControler.initView();
 				}
@@ -59,7 +59,7 @@ public class CompteControler implements ICompteControler {
 	}
 	public void quitter() {
 // Start of user code for quitter
-		//On veut fermer toutes les fenêtres ouvertes
+		//On veut fermer toutes les fenï¿½tres ouvertes
 		Display.getCurrent().dispose();
 // End of user code for quitter
 	}

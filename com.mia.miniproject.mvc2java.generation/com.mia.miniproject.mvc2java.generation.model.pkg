@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PACKAGE SYSTEM "package.dtd">
-<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.model" METAMODEL="MVC" NUMBER="23"
+<PACKAGE NAME="com.mia.miniproject.mvc2java.generation.model" METAMODEL="MVC" NUMBER="20"
 >
 	<fileHeader version="5" toolName="Mia-Generation" toolVersion="9.1.0"/>
 	<SCENARIO NAME="ModelGeneration" VISIBILITY="public" META_OBJECT="Model" CATEGORY="default">
@@ -109,13 +109,7 @@ return manager.apply(current.getOwnedElements(), "ListeGetterSetterDef");
 	private List<com.mia.banque.model.I[[name@¤] list[[name]]s;
 
 ]]></TEXT>
-		<PROPERTY NAME="Precondition"/>
 	</SCRIPT>
-	<MACRO_CONDITION NAME="ListeDecl$Precondition" META_OBJECT="Model" CATEGORY="default">
-		<TEXT><![CDATA[
-return !current.getOwnedElements().isEmpty();
-]]></TEXT>
-	</MACRO_CONDITION>
 	<SCRIPT NAME="ListeGetterSetterDecl" META_OBJECT="Model" CATEGORY="default">
 		<TEXT><![CDATA[
 	public List<com.mia.banque.model.I[[name@¤] getList[[name]]s() {
@@ -130,26 +124,14 @@ return !current.getOwnedElements().isEmpty();
 	}
 
 ]]></TEXT>
-		<PROPERTY NAME="Precondition"/>
 	</SCRIPT>
-	<MACRO_CONDITION NAME="ListeGetterSetterDecl$Precondition" META_OBJECT="Model" CATEGORY="default">
-		<TEXT><![CDATA[
-return !current.getOwnedElements().isEmpty();
-]]></TEXT>
-	</MACRO_CONDITION>
 	<SCRIPT NAME="ListeGetterSetterDef" META_OBJECT="Model" CATEGORY="default">
 		<TEXT><![CDATA[
 	public List<I[[name@¤] getList[[name]]s();
 	public void setList[[name]]s(List<com.mia.banque.model.I[[name@¤] newValue);
 
 ]]></TEXT>
-		<PROPERTY NAME="Precondition"/>
 	</SCRIPT>
-	<MACRO_CONDITION NAME="ListeGetterSetterDef$Precondition" META_OBJECT="Model" CATEGORY="default">
-		<TEXT><![CDATA[
-return !current.getOwnedElements().isEmpty();
-]]></TEXT>
-	</MACRO_CONDITION>
 	<SCRIPT NAME="AttributDecl" META_OBJECT="ModelProperty" CATEGORY="default">
 		<TEXT><![CDATA[
 	private String [[name]];
