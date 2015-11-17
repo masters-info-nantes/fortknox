@@ -57,7 +57,7 @@ package com.mia.banque.ui.controler.swt;
 
 [[ImportsMvcControler]]
 
-public class [[model.name]]Controler extends Shell implements I[[model.name]]Controler {
+public class [[model.name]]Controler implements I[[model.name]]Controler {
 
 [[AttributesMvcControler]]
 

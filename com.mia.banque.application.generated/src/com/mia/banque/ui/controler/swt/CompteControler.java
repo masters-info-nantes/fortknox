@@ -18,7 +18,7 @@ import com.mia.banque.ui.view.ICompteView;
 import com.mia.banque.ui.view.swt.CompteView;
 import com.mia.banque.model.ICompte;
 
-public class CompteControler extends Shell implements ICompteControler {
+public class CompteControler implements ICompteControler {
 
 	private CompteView view;
 	private ICompte model;

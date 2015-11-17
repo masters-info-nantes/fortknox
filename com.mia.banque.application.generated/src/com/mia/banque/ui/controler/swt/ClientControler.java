@@ -18,7 +18,7 @@ import com.mia.banque.ui.view.IClientView;
 import com.mia.banque.ui.view.swt.ClientView;
 import com.mia.banque.model.IClient;
 
-public class ClientControler extends Shell implements IClientControler {
+public class ClientControler implements IClientControler {
 
 	private ClientView view;
 	private IClient model;

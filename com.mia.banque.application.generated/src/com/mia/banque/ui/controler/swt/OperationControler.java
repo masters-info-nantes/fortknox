@@ -18,7 +18,7 @@ import com.mia.banque.ui.view.IOperationView;
 import com.mia.banque.ui.view.swt.OperationView;
 import com.mia.banque.model.IOperation;
 
-public class OperationControler extends Shell implements IOperationControler {
+public class OperationControler implements IOperationControler {
 
 	private OperationView view;
 	private IOperation model;

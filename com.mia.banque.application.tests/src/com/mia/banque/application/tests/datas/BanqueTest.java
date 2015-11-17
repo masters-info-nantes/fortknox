@@ -27,15 +27,15 @@ public class BanqueTest {
 	    client2.setPrenom("Pierre");
 	    client2.setAdresse("Lyon");
 
-	    banque.getClients().add(client1);
-	    banque.getClients().add(client2);
+	    banque.getListClients().add(client1);
+	    banque.getListClients().add(client2);
 
 	    // Client 1
 
 	    compte = new Compte();
 	    compte.setNumero("123456");
 	    
-	    client1.getComptes().add(compte);
+	    client1.getListComptes().add(compte);
 	    
     	Operation credit = new Operation();
     	credit.setMontant("1000");
@@ -43,15 +43,15 @@ public class BanqueTest {
     	
     	Operation debit1 = new Operation();
     	debit1.setMontant("-100");
-    	debit1.setNumero("Téléphone");
+    	debit1.setNumero("Tï¿½lï¿½phone");
 
     	Operation debit2 = new Operation();
     	debit2.setMontant("-400");
     	debit2.setNumero("Loyer");
     	
-    	compte.getOperations().add(credit);
-    	compte.getOperations().add(debit1);
-    	compte.getOperations().add(debit2);
+    	compte.getListOperations().add(credit);
+    	compte.getListOperations().add(debit1);
+    	compte.getListOperations().add(debit2);
 
 
 	    // Client 2
@@ -59,7 +59,7 @@ public class BanqueTest {
 	    compte = new Compte();
 	    compte.setNumero("789123");
 	    
-	    client2.getComptes().add(compte);
+	    client2.getListComptes().add(compte);
 	    
     	credit = new Operation();
     	credit.setMontant("400");
@@ -67,10 +67,10 @@ public class BanqueTest {
     	
     	debit1 = new Operation();
     	debit1.setMontant("-300");
-    	debit1.setNumero("Electricité");
+    	debit1.setNumero("Electricitï¿½");
 
-    	compte.getOperations().add(credit);
-    	compte.getOperations().add(debit1);
+    	compte.getListOperations().add(credit);
+    	compte.getListOperations().add(debit1);
 
 
 	    return banque;

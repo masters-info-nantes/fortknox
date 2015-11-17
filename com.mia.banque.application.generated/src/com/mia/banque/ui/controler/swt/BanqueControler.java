@@ -18,7 +18,7 @@ import com.mia.banque.ui.view.IBanqueView;
 import com.mia.banque.ui.view.swt.BanqueView;
 import com.mia.banque.model.IBanque;
 
-public class BanqueControler extends Shell implements IBanqueControler {
+public class BanqueControler implements IBanqueControler {
 
 	private BanqueView view;
 	private IBanque model;
